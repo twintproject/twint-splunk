@@ -1,0 +1,12 @@
+
+
+FROM alpine
+
+RUN apk add python3 bash git gcc g++ python3-dev libffi-dev \
+	&& pip3 install --upgrade pip
+
+RUN pip3 install twint
+
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+
