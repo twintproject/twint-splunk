@@ -18,4 +18,10 @@ then
 	exec /bin/bash
 fi
 
+#
+# We're running twint directly!
+# Change to /mnt since that should be linked to the host directory, then run.
+#
+cd /mnt
+exec /usr/bin/twint $@
 
