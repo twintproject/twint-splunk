@@ -7,9 +7,12 @@ I will add to this README as parts of this project become usable. :-)
 ## Sample Usage
 
 This command will download every tweet I wrote in the year 2019 and write them to the file `tweets.txt` in the current directory:
-- `bash <(curl -s https://raw.githubusercontent.com/dmuth/twint-splunk/master/twint) -u dmuth -o tweets.txt` -u dmuth -o tweets.txt --year 2020 --since 2019-01-01`
+- `bash <(curl -s https://raw.githubusercontent.com/dmuth/twint-splunk/master/twint) -u dmuth -o tweets.txt --year 2020 --since 2019-01-01`
 
-As of this writing (13 Oct 2019), it downloaded 2,028 tweets in 2 minutes, 15 seconds. So that's a rate of 15 tweets/sec.  Not bad!
+This command uses the `twint-user` helper script and does the same, except tweets will be written in JSON format to `logs/user/dmuth/tweets.json`
+- `bash <(curl -s https://raw.githubusercontent.com/dmuth/twint-splunk/master/twint-user) dmuth --year 2020 --since 2019-01-01`
+
+As of this writing (13 Oct 2019), I can download 2,028 tweets in 2 minutes, 15 seconds. So that's a rate of 15 tweets/sec.  Not bad!
 
 
 
