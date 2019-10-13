@@ -49,8 +49,8 @@ fi
 #
 # Make sure our directory exists and set a destination.
 #
-mkdir -p logs/user
-OUTPUT=logs/user/${USERNAME}-tweets.json
+mkdir -p logs/user/${USERNAME}
+OUTPUT=logs/user/${USERNAME}/tweets.json
 
 
 #
@@ -63,6 +63,12 @@ echo "# Go to https://github.com/twintproject/twint for the official webpage and
 echo "# "
 echo "# Downloading tweets from Twitter user '${USERNAME}' to file '${OUTPUT}'"
 echo "# "
+if test "$#"
+then
+	echo "# Additional args: $@"
+	echo "#"
+fi
+
 docker run -v $(pwd):/mnt ${NAME} -u ${USERNAME} -o ${OUTPUT} --json $@
 
 
