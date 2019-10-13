@@ -52,6 +52,10 @@ fi
 mkdir -p logs/user/${USERNAME}
 OUTPUT=logs/user/${USERNAME}/tweets.json
 
+#
+# Set up our resume file
+#
+RESUME="resume-user-${USERNAME}.txt"
 
 #
 # Now run our image with the passed in arguments.
@@ -62,6 +66,7 @@ echo "# You are running Twint Splunk, built from: https://github.com/dmuth/twint
 echo "# Go to https://github.com/twintproject/twint for the official webpage and documentation."
 echo "# "
 echo "# Downloading tweets from Twitter user '${USERNAME}' to file '${OUTPUT}'"
+echo "# Resume file: ${RESUME}"
 echo "# "
 if test "$#"
 then
@@ -69,6 +74,6 @@ then
 	echo "#"
 fi
 
-docker run -v $(pwd):/mnt ${NAME} -u ${USERNAME} -o ${OUTPUT} --json $@
+docker run -v $(pwd):/mnt ${NAME} -u ${USERNAME} -o ${OUTPUT} --resume ${RESUME} --json $@
 
 
