@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Download and run the Twint Dockage image.
+# Download and run the Twint Docker image.
 #
 
 # Errors are fatal
