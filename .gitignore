@@ -3,3 +3,9 @@
 *.swp
 *~
 
+# Stuff that we download
+logs/
+
+# Resume files
+resume-*
+
