@@ -10,7 +10,7 @@ set -e
 # Are we building/running the full version? (Lite version by default)
 #
 FULL=""
-NAME="twint"
+NAME="twint-lite"
 DOCKERFILE="Dockerfile"
 if test "$1" == "full"
 then
@@ -34,6 +34,10 @@ echo "# "
 echo "# Tagging Docker container ${NAME}..."
 echo "# "
 docker tag ${NAME} dmuth1/${NAME}
+if test "$NAME" == "twint-lite"
+then
+	docker tag twint dmuth1/twint
+fi
 
 echo "# Done!"
 

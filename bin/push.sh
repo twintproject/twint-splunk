@@ -10,7 +10,7 @@ set -e
 # Are we building/running the full version? (Lite version by default)
 #
 FULL=""
-NAME="twint"
+NAME="twint-lite"
 if test "$1" == "full"
 then
 	FULL=1
@@ -24,14 +24,13 @@ pushd $(dirname $0) > /dev/null
 cd ..
 
 echo "# "
-echo "# Tagging container '${NAME}'..."
-echo "# "
-docker tag ${NAME} dmuth1/${NAME}
-
-echo "# "
 echo "# Pushing container '${NAME}' to Docker Hub..."
 echo "# "
 docker push dmuth1/${NAME}
+if test "$NAME" == "twint-lite"
+then
+	docker push dmuth1/twint
+fi
 
 
 echo "# Done!"

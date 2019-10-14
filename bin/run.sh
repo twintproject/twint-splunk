@@ -9,7 +9,7 @@ set -e
 #
 # Are we running the full version? (Lite version by default)
 #
-NAME="twint"
+NAME="twint-lite"
 FULL=""
 if test "$1" == "full"
 then
