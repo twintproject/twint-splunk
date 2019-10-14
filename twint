@@ -9,7 +9,7 @@ set -e
 #
 # Are we running the full version? (Lite version by default)
 #
-NAME="dmuth1/twint"
+NAME="dmuth1/twint-lite"
 FULL=""
 if test "$1" == "full"
 then
