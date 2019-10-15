@@ -46,16 +46,19 @@ then
 	docker pull ${NAME}
 fi
 
+ARGS_STR=$(echo $@ | sed -e s/[^A-Za-z0-9-]/_/g)
+TWEETS="tweets-${ARGS_STR}.json"
+
 #
 # Make sure our directory exists and set a destination.
 #
 mkdir -p logs/user/${USERNAME}
-OUTPUT=logs/user/${USERNAME}/tweets.json
+OUTPUT=logs/user/${USERNAME}/${TWEETS}
 
 #
 # Set up our resume file
 #
-RESUME="resume-user-${USERNAME}.txt"
+RESUME="resume-user-${USERNAME}-${ARGS_STR}.txt"
 
 #
 # Now run our image with the passed in arguments.
