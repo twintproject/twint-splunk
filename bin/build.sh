@@ -11,7 +11,7 @@ set -e
 #
 FULL=""
 NAME="twint-lite"
-DOCKERFILE="Dockerfile"
+DOCKERFILE="Dockerfile-lite"
 if test "$1" == "full"
 then
 	FULL=1
