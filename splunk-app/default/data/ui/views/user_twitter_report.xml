@@ -127,7 +127,10 @@
       <title>Top Users Mentioned</title>
       <table>
         <search>
-          <query>index=main username=$username$ tweet=*$keyword$* | dedup id | spath path=mentions{} output=mentioned_user | mvexpand mentioned_user | stats count by mentioned_user | sort -count | head 10 | rename count as "Num Tweets" | rename mentioned_user as User</query>
+          <query>index=main username=$username$ tweet=*$keyword$* | dedup id | spath path=mentions{} output=mentioned_user | mvexpand mentioned_user | stats count by mentioned_user | sort -count 
+| head 10 
+| eval mentioned_user = "@" + mentioned_user
+| rename count as "Num Tweets" | rename mentioned_user as User</query>
           <earliest>$date.earliest$</earliest>
           <latest>$date.latest$</latest>
           <sampleRatio>1</sampleRatio>
@@ -154,7 +157,10 @@
       <title>Top Users Mentioned</title>
       <table>
         <search>
-          <query>index=main username=$username$ tweet=*$keyword$* | dedup id | spath path=mentions{} output=mentioned_user | mvexpand mentioned_user | stats count by mentioned_user | sort -count | head 10 | rename count as "Num Tweets" | rename mentioned_user as User</query>
+          <query>index=main username=$username$ tweet=*$keyword$* | dedup id | spath path=mentions{} output=mentioned_user | mvexpand mentioned_user | stats count by mentioned_user | sort -count 
+| head 10 
+| eval mentioned_user = "@" + mentioned_user
+| rename count as "Num Tweets" | rename mentioned_user as User</query>
           <earliest>$date.earliest$</earliest>
           <latest>$date.latest$</latest>
           <sampleRatio>1</sampleRatio>
