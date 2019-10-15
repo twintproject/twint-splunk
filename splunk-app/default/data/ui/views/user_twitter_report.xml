@@ -8,13 +8,23 @@
         <latest>now</latest>
       </default>
     </input>
+    <input type="dropdown" token="username" searchWhenChanged="true">
+      <label>Username</label>
+      <fieldForLabel>username</fieldForLabel>
+      <fieldForValue>username</fieldForValue>
+      <search>
+        <query>index=main earliest=-1y | stats count by username | table username | sort username</query>
+        <earliest>-1y</earliest>
+        <latest>now</latest>
+      </search>
+    </input>
   </fieldset>
   <row>
     <panel>
       <title>Tweets Over Time</title>
       <chart>
         <search>
-          <query>index=main | timechart count</query>
+          <query>index=main username=$username$ | dedup id | timechart count</query>
           <earliest>$date.earliest$</earliest>
           <latest>$date.latest$</latest>
           <sampleRatio>1</sampleRatio>
@@ -52,6 +62,73 @@
         <option name="trellis.scales.shared">1</option>
         <option name="trellis.size">medium</option>
       </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Total Num Tweets</title>
+      <single>
+        <search>
+          <query>index=main username=$username$ | dedup id | stats count</query>
+          <earliest>$date.earliest$</earliest>
+          <latest>$date.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Num Replies</title>
+      <single>
+        <search>
+          <query>index=main username=$username$ | dedup id | spath path=mentions{} output=mentions_txt | eval cnt=mvcount(mentions_txt) | search cnt &gt; 0 | stats count</query>
+          <earliest>$date.earliest$</earliest>
+          <latest>$date.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Num Tweets With Photos</title>
+      <single>
+        <search>
+          <query>index=main username=$username$ | dedup id | spath path=photos{} output=photos_txt | eval cnt=mvcount(photos_txt) | search cnt &gt; 0 | stats count</query>
+          <earliest>$date.earliest$</earliest>
+          <latest>$date.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Top Users Mentioned</title>
+      <table>
+        <search>
+          <query>index=main username=$username$ | dedup id | spath path=mentions{} output=mentioned_user | mvexpand mentioned_user | stats count by mentioned_user | sort -count | head 10 | rename count as "Num Tweets" | rename mentioned_user as User</query>
+          <earliest>$date.earliest$</earliest>
+          <latest>$date.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="count">
+          <colorPalette type="minMidMax" maxColor="#006D9C" minColor="#FFFFFF"></colorPalette>
+          <scale type="minMidMax"></scale>
+        </format>
+        <format type="color" field="Num Tweets">
+          <colorPalette type="minMidMax" maxColor="#006D9C" minColor="#FFFFFF"></colorPalette>
+          <scale type="minMidMax"></scale>
+        </format>
+      </table>
     </panel>
   </row>
 </form>
