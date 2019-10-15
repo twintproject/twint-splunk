@@ -1,6 +1,7 @@
 <nav search_view="search" color="#ffffff" >
 
-  <view name="search" default="true" />
+  <view name="user_twitter_report" default="true" />
+  <view name="search" />
 
   <collection label="More">
      <view name="dashboards" />
