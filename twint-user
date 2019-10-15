@@ -79,4 +79,9 @@ fi
 
 docker run -v $(pwd):/mnt ${NAME} -u ${USERNAME} -o ${OUTPUT} --resume ${RESUME} --json $@
 
+#
+# After a successful run, we don't need our resume file anymore.
+#
+rm -f $RESUME
+
 
