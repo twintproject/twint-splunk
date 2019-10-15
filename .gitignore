@@ -12,3 +12,6 @@ logs/
 # Resume files
 resume-*
 
+# Splunk Data
+splunk-data/
+
