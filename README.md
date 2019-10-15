@@ -33,8 +33,8 @@ twint -u dmuth -o tweets.txt --resume resume-user-dmuth.txt --since 2019-01-01 u
    - `./bin/pull.sh [ full ]` - Pull Docker image from Docker Hub.
    - `./bin/run.sh [ full ] args` - Run for production use. Additional args should be passed in on the command line.
 - Splunk Management:
-   - `./splunk-start.sh` - Start a Splunk instance at <a href="https://localhost:8000">https://localhost:8000/</a>.  Just follow the instructions on configuring Splunk.
-   - `./splunk-stop.sh` - Kill the Splunk instance
+   - `./bin/splunk-start.sh [ --devel ]` - Start a Splunk instance at <a href="https://localhost:8000">https://localhost:8000/</a>.  Just follow the instructions on configuring Splunk. Use `--devel` if you want an interactive shell opened in the container.
+   - `./bin/splunk-stop.sh` - Kill the Splunk instance
 
 
 ## Bugs/TODO
