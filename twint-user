@@ -55,6 +55,12 @@ TWEETS="tweets-${ARGS_STR}.json"
 mkdir -p logs/user/${USERNAME}
 OUTPUT=logs/user/${USERNAME}/${TWEETS}
 
+if test -f ${OUTPUT}.done
+then
+	echo "File ${OUTPUT}.done exists, we don't need to download these tweets!"
+	exit 0
+fi
+
 #
 # Set up our resume file
 #
@@ -83,5 +89,7 @@ docker run -v $(pwd):/mnt ${NAME} -u ${USERNAME} -o ${OUTPUT} --resume ${RESUME}
 # After a successful run, we don't need our resume file anymore.
 #
 rm -f $RESUME
+touch ${OUTPUT}.done
+
 
 
