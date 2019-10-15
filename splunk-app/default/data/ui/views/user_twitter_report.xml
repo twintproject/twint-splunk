@@ -153,36 +153,6 @@
         </format>
       </table>
     </panel>
-    <panel>
-      <title>Top Users Mentioned</title>
-      <table>
-        <search>
-          <query>index=main username=$username$ tweet=*$keyword$* | dedup id | spath path=mentions{} output=mentioned_user | mvexpand mentioned_user | stats count by mentioned_user | sort -count 
-| head 10 
-| eval mentioned_user = "@" + mentioned_user
-| rename count as "Num Tweets" | rename mentioned_user as User</query>
-          <earliest>$date.earliest$</earliest>
-          <latest>$date.latest$</latest>
-          <sampleRatio>1</sampleRatio>
-        </search>
-        <option name="count">10</option>
-        <option name="dataOverlayMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="percentagesRow">false</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="rowNumbers">false</option>
-        <option name="totalsRow">false</option>
-        <option name="wrap">true</option>
-        <format type="color" field="count">
-          <colorPalette type="minMidMax" maxColor="#006D9C" minColor="#FFFFFF"></colorPalette>
-          <scale type="minMidMax"></scale>
-        </format>
-        <format type="color" field="Num Tweets">
-          <colorPalette type="minMidMax" maxColor="#006D9C" minColor="#FFFFFF"></colorPalette>
-          <scale type="minMidMax"></scale>
-        </format>
-      </table>
-    </panel>
   </row>
   <row>
     <panel>
