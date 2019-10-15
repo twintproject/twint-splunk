@@ -4,16 +4,24 @@ Work in progress!
 I will add to this README as parts of this project become usable. :-)
 
 
-## Sample Usage
+## Quick and Dirty Usage
 
-- This command will download every tweet I wrote in the year 2019 and write them to the file `tweets.txt` in the current directory:
-   - `bash <(curl -s https://raw.githubusercontent.com/dmuth/twint-splunk/master/twint) -u dmuth -o tweets.txt --resume resume-user-dmuth.txt --year 2020 --since 2019-01-01`
+You don't even need to clone the repo for these:
 - This command uses the `twint-user` helper script and does the same, except tweets will be written in JSON format to `logs/user/dmuth/` and a resume file will automatically be used:
    - `bash <(curl -s https://raw.githubusercontent.com/dmuth/twint-splunk/master/twint-user) dmuth --year 2020 --since 2019-01-01`
    - When the command completes a file with the suffix `.done` will be written next to the log so that if the command is re-run with the same parameters, the download will be skipped.
-- Download 5 years of tweets:
+- Download 5 years of tweets with `twint-user-by-year`:
    - `bash <(curl -s https://raw.githubusercontent.com/dmuth/twint-splunk/master/twint-user-by-year) dmuth 2010 2014`
 
+
+## Regular Usage
+
+First, clone the repo. :-)
+
+Now, you can run `./twint` which is a Docker wrapper for my twint-lite build.
+- Get every tweet I made in 2019:
+   - `bash <(curl -s https://raw.githubusercontent.com/dmuth/twint-splunk/master/
+twint -u dmuth -o tweets.txt --resume resume-user-dmuth.txt --since 2019-01-01 until 2020-01-01`
 
 
 ## Development
