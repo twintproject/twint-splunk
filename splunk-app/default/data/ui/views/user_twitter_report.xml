@@ -69,14 +69,40 @@
     </panel>
   </row>
   <row>
-    <panel>
-      <title>Total Num Tweets</title>
-      <single>
+    <panel id="panelWithGridLayout">
+      <title>Tweet Stats</title>
+      <html depends="$alwaysHideCSSPanel$">
+         <style>
+           /*
+           * Source: https://answers.splunk.com/answers/717452/how-to-stack-two-data-element-visualizations.html
+           */
+           #panelWithGridLayout .panel-element-row{
+             display: grid;
+           }
+           #panel1 #singlevalue.viz-controller,
+           #panel1 div.splunk-single div.ui-resizable{
+             height: 230px !important;
+           }
+           #singleStacked1 .dashboard-element-body,
+           #singleStacked2 .dashboard-element-body,
+           #singleStacked3 .dashboard-element-body{
+             width: 300% !important;
+           }
+           
+           #singleStacked1 text.under-label,
+           #singleStacked2 text.under-label,
+           #singleStacked3 text.under-label {
+            font-size: 14px !important;
+           }
+         </style>
+       </html>
+      <single id="singleStacked1">
         <search>
           <query>index=main username=$username$ tweet=*$keyword$* | dedup id | stats count</query>
           <earliest>$date.earliest$</earliest>
           <latest>$date.latest$</latest>
         </search>
+        <option name="underLabel">Total Num Tweets</option>
         <option name="colorMode">block</option>
         <option name="drilldown">none</option>
         <option name="rangeColors">["0x006d9c","0xdc4e41"]</option>
@@ -84,17 +110,13 @@
         <option name="refresh.display">progressbar</option>
         <option name="useColors">1</option>
       </single>
-    </panel>
-    <panel>
-      <title>Num Replies</title>
-      <single>
+      <single id="singleStacked2">
         <search>
           <query>index=main username=$username$ tweet=*$keyword$* | dedup id | spath path=mentions{} output=mentions_txt | eval cnt=mvcount(mentions_txt) | search cnt &gt; 0 | stats count</query>
           <earliest>$date.earliest$</earliest>
           <latest>$date.latest$</latest>
         </search>
-        <option name="drilldown">none</option>
-        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Num Replies</option>
         <option name="colorMode">block</option>
         <option name="drilldown">none</option>
         <option name="rangeColors">["0x006d9c","0xdc4e41"]</option>
@@ -102,17 +124,14 @@
         <option name="refresh.display">progressbar</option>
         <option name="useColors">1</option>
       </single>
-    </panel>
-    <panel>
-      <title>Num Tweets With Photos</title>
-      <single>
+      <single id="singleStacked3">
+        <title></title>
         <search>
           <query>index=main username=$username$ tweet=*$keyword$* | dedup id | spath path=photos{} output=photos_txt | eval cnt=mvcount(photos_txt) | search cnt &gt; 0 | stats count</query>
           <earliest>$date.earliest$</earliest>
           <latest>$date.latest$</latest>
         </search>
-        <option name="drilldown">none</option>
-        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Num Tweets With Photos</option>
         <option name="colorMode">block</option>
         <option name="drilldown">none</option>
         <option name="rangeColors">["0x006d9c","0xdc4e41"]</option>
@@ -121,8 +140,6 @@
         <option name="useColors">1</option>
       </single>
     </panel>
-  </row>
-  <row>
     <panel>
       <title>Top Users Mentioned</title>
       <table>
