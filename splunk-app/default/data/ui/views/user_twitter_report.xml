@@ -92,7 +92,7 @@
            #singleStacked1 text.under-label,
            #singleStacked2 text.under-label,
            #singleStacked3 text.under-label {
-            font-size: 14px !important;
+            font-size: 16px !important;
            }
          </style>
        </html>
