@@ -1,6 +1,7 @@
 <nav search_view="search" color="#ffffff" >
 
   <view name="user_twitter_report" default="true" />
+  <view name="tag_cloud" />
   <view name="search" />
 
   <collection label="More">

@@ -1,0 +1,93 @@
+<form>
+  <label>Tag Cloud</label>
+  <fieldset submitButton="false">
+    <input type="time" token="field1" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>-1y</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="dropdown" token="username" searchWhenChanged="true">
+      <label>Username</label>
+      <fieldForLabel>username</fieldForLabel>
+      <fieldForValue>username</fieldForValue>
+      <search>
+        <query>index=main earliest=-1y | stats count by username | table username | sort username</query>
+        <earliest>-1y@y</earliest>
+        <latest>now</latest>
+      </search>
+    </input>
+    <input type="dropdown" token="min_length" searchWhenChanged="true">
+      <label>Min Word Length</label>
+      <choice value="3">3 chars</choice>
+      <choice value="4">4 chars</choice>
+      <choice value="5">5 chars</choice>
+      <choice value="6">6 chars</choice>
+      <choice value="7">7 chars</choice>
+      <choice value="8">8 chars</choice>
+      <default>4</default>
+      <initialValue>4</initialValue>
+    </input>
+    <input type="dropdown" token="min_count" searchWhenChanged="true">
+      <label>Min Count</label>
+      <choice value="1">1 instance</choice>
+      <choice value="2">2 instances</choice>
+      <choice value="3">3 instances</choice>
+      <choice value="4">4 instances</choice>
+      <choice value="5">5 instances</choice>
+      <choice value="10">10 instances</choice>
+      <choice value="25">25 instances</choice>
+      <default>3</default>
+      <initialValue>3</initialValue>
+    </input>
+    <input type="dropdown" token="num_words" searchWhenChanged="true">
+      <label>Num Words?</label>
+      <choice value="100">100 Words</choice>
+      <choice value="200">200 Words</choice>
+      <choice value="300">300 Words</choice>
+      <choice value="400">400 Words</choice>
+      <choice value="500">500 Words</choice>
+      <default>200</default>
+      <initialValue>200</initialValue>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>index=main username=$username$ 
+| makemv tokenizer="([0-9a-zA-Z]+)" tweet | mvexpand tweet 
+
+| search NOT (tweet="with" OR tweet="at" OR tweet="from" OR tweet="into" OR tweet="during" OR tweet="including" OR tweet="until" OR tweet="against" OR tweet="among" OR tweet="throughout" OR tweet="despite" OR tweet="towards" OR tweet="upon" OR tweet="concerning" OR tweet="about" OR tweet="like" OR tweet="through" OR tweet="over" OR tweet="before" OR tweet="between" OR tweet="after" OR tweet="since" OR tweet="without" OR tweet="under" OR tweet="within" OR tweet="along" OR tweet="following" OR tweet="across" OR tweet="behind" OR tweet="beyond" OR tweet="plus" OR tweet="except" OR tweet="around" OR tweet="down" OR tweet="above") 
+| search NOT (tweet="this" OR tweet="that" OR tweet="https" OR tweet="their" OR tweet="they"OR tweet="them" OR tweet="have")
+| search NOT (tweet="*&amp;amp;*" OR tweet="*;*")
+
+| eval len=len(tweet) | where len &gt;= $min_length$
+| stats count by tweet | where count &gt;= $min_count$
+| table tweet count
+| sort -count
+| head $num_words$</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">1000</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="wordcloud_app.wordcloud.alignmentMode">horizontal</option>
+        <option name="wordcloud_app.wordcloud.backgroundColor">#222</option>
+        <option name="wordcloud_app.wordcloud.colorBy">colorMode</option>
+        <option name="wordcloud_app.wordcloud.colorMode">categorical</option>
+        <option name="wordcloud_app.wordcloud.maxColor">#3fc77a</option>
+        <option name="wordcloud_app.wordcloud.minColor">#d93f3c</option>
+        <option name="wordcloud_app.wordcloud.numOfBins">8</option>
+        <option name="wordcloud_app.wordcloud.splunkTastic">false</option>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+      </viz>
+    </panel>
+  </row>
+</form>
