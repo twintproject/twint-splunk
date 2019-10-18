@@ -8,6 +8,17 @@
         <latest>now</latest>
       </default>
     </input>
+    <input type="dropdown" token="span" searchWhenChanged="true">
+      <label>Span</label>
+      <choice value="1d">1 Day</choice>
+      <choice value="1w">1 Week</choice>
+      <choice value="1mon">1 Month</choice>
+      <choice value="3mon">3 Months</choice>
+      <choice value="6mon">6 Months</choice>
+      <choice value="1y">1 Year</choice>
+      <default>1y</default>
+      <initialValue>1y</initialValue>
+    </input>
     <input type="dropdown" token="username" searchWhenChanged="true">
       <label>Username</label>
       <fieldForLabel>username</fieldForLabel>
@@ -28,7 +39,7 @@
       <title>Tweets Over Time</title>
       <chart>
         <search>
-          <query>index=main username=$username$ tweet=*$keyword$* | dedup id | timechart count</query>
+          <query>index=main username=$username$ tweet=*$keyword$* | dedup id | timechart span=$span$ count</query>
           <earliest>$date.earliest$</earliest>
           <latest>$date.latest$</latest>
           <sampleRatio>1</sampleRatio>
