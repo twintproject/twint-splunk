@@ -48,3 +48,15 @@ please check out more detailed instructions in <a href="HOW-TO-DOWNLOAD-MANY-TWE
 - If you try writing a file to a directory that is not under the current directory, Docker will likely have path issues.
 
 
+## Credits
+
+- <a href="https://github.com/twintproject/twint">Twint</a> - The ability to download an entire timeline without having to use Twitter's overly restrctive API is amazing!
+- <a href="http://www.splunk.com/">Splunk</a>, for having such a fantastic product which is also a great example of Operational Excellence!
+- <a href="http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Standard&t=Splunk%20Lab">This text to ASCII art generator</a>, for the logo I used in the script.
+
+
+# Contact
+
+My email is doug.muth@gmail.com.  I am also <a href="http://twitter.com/dmuth">@dmuth on Twitter</a> 
+and <a href="http://facebook.com/dmuth">Facebook</a>!
+
