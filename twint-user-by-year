@@ -38,6 +38,33 @@ fi
 for YEAR in $(seq $YEAR_START $YEAR_STOP)
 do
 
+	#
+	# There's currently a bug where sometimes you get the previous month,
+	# with options like: twint-user dmuth --since 2009-08-01 --until 2009-09-01
+	#
+	# So for now, this remains commented out or else I'll just get tons of extra months.
+	# Once the bug is fixed, I'll switch out the "yearly" code to this "monthly" code.
+	#
+	#for MONTH in $(seq 1 12)
+	#do
+	#
+	#	SINCE="${YEAR}-${MONTH}-01"
+	#
+	#	if test "${MONTH}" != 12
+	#	then
+	#		UNTIL="${YEAR}-$((MONTH + 1))-01"
+	#	else
+	#		UNTIL="$((YEAR + 1 ))-01-01"
+	#	fi
+	#
+	#	echo "# "
+	#	echo "# Starting download of tweets from ${SINCE} to ${UNTIL}"
+	#	echo "# "
+	#	./twint-user ${USER} --since ${SINCE} --until ${UNTIL}
+	#	echo "# Done with range ${SINCE} to ${UNTIL}!"
+	#
+	#done
+
 	echo "# "
 	echo "# Starting download of tweets for user from year ${YEAR}..."
 	echo "# "
