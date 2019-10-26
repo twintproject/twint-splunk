@@ -24,6 +24,12 @@ Now, you can run `./twint` which is a Docker wrapper for my twint-lite build.
 twint -u dmuth -o tweets.txt --resume resume-user-dmuth.txt --since 2019-01-01 until 2020-01-01`
 
 
+### Advanced Usage
+
+If you want to download multiple Twitter timelines or a very busy user's timeline,
+please check out more detailed instructions in <a href="HOW-TO-DOWNLOAD-MANY-TWEETS.md">HOW-TO-DOWNLOAD-MANY-TWEETS.md</a>.
+
+
 ## Development
 
 - Twint Docker Management:
