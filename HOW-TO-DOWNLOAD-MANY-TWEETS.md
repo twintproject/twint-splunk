@@ -34,7 +34,7 @@ machine and running Twint there.  This document will show you how.
    - `./twint-user-by-year USERNAME 2005 2019 | pv -l > /dev/null`
 - Back on your machine, you can download all tweets and destroy the Droplet when you're done:
    - `rsync -avz root@$(doctl compute droplet list twint --format PublicIPv4 --no-header):twint-splunk/logs/ logs/`
-   - `doctl compute droplet delete twint -f
+   - `doctl compute droplet delete twint -f`
    - Make a backup of the tweets: ` tar cfvz ~/Dropbox/tweets.tgz logs/`
    - Finally, start up Splunk with `./bin/devel.sh` or `./bin/run.sh` and go to <a href="https://localhost:8000/">https://localhost:8000/</a>
 
