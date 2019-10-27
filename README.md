@@ -72,6 +72,7 @@ Or, to paraphrase Adam Savage, I rejected the reality and substituted my own. :-
 - Support downloads on a monthly basis once the bug I found in Twint is fixed.
 - Write a script to allow tweets within a set of coordinates.
 - Build a dashboard to display tweets on a map.
+- Use the Sentiment Analysis module to gauge sentiment over time and build tag clouds of positive/negative tweets.
 
 
 ## Credits
