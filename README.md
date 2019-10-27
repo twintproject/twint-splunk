@@ -41,6 +41,18 @@ If you want to download multiple Twitter timelines or a very busy user's timelin
 please check out more detailed instructions in <a href="HOW-TO-DOWNLOAD-MANY-TWEETS.md">HOW-TO-DOWNLOAD-MANY-TWEETS.md</a>.
 
 
+#### "Twint-lite"
+
+In a few places, the term "twint-lite" is referenced.  If you look in 
+<a href="Dockerfile-lite#20">the Dockerfile around line 20</a>, you'll see that I wrote
+a series of `sed` commands to remove refernces to the `pandas` module.  I have no issues
+with that module per se, but its presence was causing builds to take upwards of 10-15 minutes
+on my machine.  Removing references to it sped up builds of the Docker image to be around 30 seconds,
+without breaking the core functionality of pulling Twitter timelines.
+
+Or, to paraphrase Adam Savage, I rejected the reality and substituted my own. :-)
+
+
 ## Development
 
 - Twint Docker Management:
