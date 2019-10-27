@@ -1,5 +1,5 @@
 <form>
-  <label>User Twitter Report</label>
+  <label>User Twitter Report (base search)</label>
   <fieldset submitButton="false">
     <input type="time" token="date" searchWhenChanged="true">
       <label></label>

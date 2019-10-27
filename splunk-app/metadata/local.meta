@@ -1,10 +1,22 @@
 [views/user_twitter_report]
 owner = admin
 version = 7.3.1.1
-modtime = 1571358748.580529000
+modtime = 1572209913.292891000
 
 [views/tag_cloud]
 owner = admin
 version = 7.3.1.1
 modtime = 1571363654.835817000
+
+[views/user_twitter_report_separate_searches]
+export = none
+owner = admin
+version = 7.3.1.1
+modtime = 1572208456.083697000
+
+[views/user_twitter_report_base_search]
+export = none
+owner = admin
+version = 7.3.1.1
+modtime = 1572212221.672153000
 
