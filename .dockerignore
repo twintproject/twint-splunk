@@ -3,5 +3,5 @@
 logs/
 
 # Splunk data
-data/
+splunk-data/
 
