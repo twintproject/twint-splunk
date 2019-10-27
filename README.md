@@ -1,7 +1,9 @@
 
-Work in progress!
+# Splunk Twint
 
-I will add to this README as parts of this project become usable. :-)
+This is actually TWO projects: 1) A Dockerized version of <a href="https://github.com/twintproject/twint">Twint</a>
+and 2) A Dockerized version of Splunk <a href="https://www.splunk.com/">Splunk</a> to ingest downloaded tweets
+and search through Twitter timelines as well as display some dashbaords.
 
 
 ## Quick and Dirty Usage
