@@ -1,10 +1,14 @@
 
 # Splunk Twint
 
-This is actually TWO projects: 1) A Dockerized version of <a href="https://github.com/twintproject/twint">Twint</a>
-and 2) A Dockerized version of Splunk <a href="https://www.splunk.com/">Splunk</a> to ingest downloaded tweets
+Depending how you count, this repo is a few different things:
+
+- A Dockerized version of <a href="https://github.com/twintproject/twint">Twint</a>
+- A series of shell scripts which wrap the Dockerized version of Twint to allow user timelines to be downloaded with checkpoints.
+- A Dockerized version of Splunk <a href="https://www.splunk.com/">Splunk</a> to ingest downloaded tweets
 and search through Twitter timelines as well as display some dashbaords.
 
+Screenshots:
 <a href="img/splunk-twint-septa-social.png"><img src="img/splunk-twint-septa-social.png" width="250" alt="Twitter Dashboard for @SEPTA_Social on Twitter"/></a>
 <a href="img/splunk-twint-septa-social-tag-cloud.png"><img src="img/splunk-twint-septa-social-tag-cloud.png" width="250" alt="Tag Cloud for @SEPTA_Social on Twitter" /></a>
 <a href="img/splunk-twint-dmuth.png"><img src="img/splunk-twint-dmuth.png" width="250" alt="Twitter Dashbaord for @dmuth on Twitter"/></a>
