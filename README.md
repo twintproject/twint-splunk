@@ -69,6 +69,9 @@ Or, to paraphrase Adam Savage, I rejected the reality and substituted my own. :-
 ## Bugs/TODO
 
 - If you try writing a file to a directory that is not under the current directory, Docker will likely have path issues.
+- Support downloads on a monthly basis once the bug I found in Twint is fixed.
+- Write a script to allow tweets within a set of coordinates.
+- Build a dashboard to display tweets on a map.
 
 
 ## Credits
