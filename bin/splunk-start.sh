@@ -108,7 +108,7 @@ DOCKER_V_APP="-v $(pwd)/splunk-app:/opt/splunk/etc/apps/splunk-twint"
 
 if test ! "$DEVEL_SPLUNK"
 then
-	ID=$(docker run $CMD ${DOCKER_V_MNT} ${DOCKER_V_APP} -d dmuth1/splunk-lab)
+	ID=$(docker run $CMD ${DOCKER_V_MNT} ${DOCKER_V_APP} -d dmuth1/splunk-lab-ml)
 	echo "# "
 	echo "# Splunk Twint launched with Docker ID: "
 	echo "# "
@@ -120,7 +120,7 @@ then
 	echo "# "
 
 else
-	docker run $CMD ${DOCKER_V_MNT} ${DOCKER_V_APP} -it dmuth1/splunk-lab bash
+	docker run $CMD ${DOCKER_V_MNT} ${DOCKER_V_APP} -it dmuth1/splunk-lab-ml bash
 
 fi
 
