@@ -1,0 +1,65 @@
+<form>
+  <label>Search User Tweets</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="date" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>-1y</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="dropdown" token="username" searchWhenChanged="true">
+      <label>Username</label>
+      <fieldForLabel>username</fieldForLabel>
+      <fieldForValue>username</fieldForValue>
+      <search>
+        <query>index=main earliest=-1y | stats count by username | table username | sort username</query>
+        <earliest>-1y</earliest>
+        <latest>now</latest>
+      </search>
+    </input>
+    <input type="text" token="keyword" searchWhenChanged="true">
+      <label>Keyword</label>
+      <default>*</default>
+    </input>
+    <input type="multiselect" token="fields" searchWhenChanged="true">
+      <label>Fields</label>
+      <choice value="link">Link</choice>
+      <choice value="likes_count">Num Likes</choice>
+      <choice value="retweets_count">Num Retweets</choice>
+      <choice value="replies_count">Num Replies</choice>
+      <choice value="mentions">Mentions</choice>
+      <default>likes_count</default>
+      <delimiter> </delimiter>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>index=main earliest=-20y username=$username$ tweet=*$keyword$* 
+| dedup id
+| rename mentions{} as mentions
+| table _time tweet $fields$ 
+| sort -_time
+| rename likes_count as "Num Likes"
+| rename retweets_count as "Num Retweets"
+| rename link as "Link"
+| rename replies_count as "Num Replies"
+| rename mentions as Mentions</query>
+          <earliest>$date.earliest$</earliest>
+          <latest>$date.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</form>
