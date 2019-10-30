@@ -57,10 +57,14 @@
       <viz type="wordcloud_app.wordcloud">
         <search>
           <query>index=main username=$username$ 
+
+| eval tweet=replace(tweet, "http[^ ]+", "")
+| eval tweet=replace(tweet, "pic.twitter.com[^ ]+", "")
+
 | makemv tokenizer="([0-9a-zA-Z]+)" tweet | mvexpand tweet 
 
 | search NOT (tweet="with" OR tweet="at" OR tweet="from" OR tweet="into" OR tweet="during" OR tweet="including" OR tweet="until" OR tweet="against" OR tweet="among" OR tweet="throughout" OR tweet="despite" OR tweet="towards" OR tweet="upon" OR tweet="concerning" OR tweet="about" OR tweet="like" OR tweet="through" OR tweet="over" OR tweet="before" OR tweet="between" OR tweet="after" OR tweet="since" OR tweet="without" OR tweet="under" OR tweet="within" OR tweet="along" OR tweet="following" OR tweet="across" OR tweet="behind" OR tweet="beyond" OR tweet="plus" OR tweet="except" OR tweet="around" OR tweet="down" OR tweet="above") 
-| search NOT (tweet="this" OR tweet="that" OR tweet="https" OR tweet="their" OR tweet="they"OR tweet="them" OR tweet="have")
+| search NOT (tweet="this" OR tweet="that" OR tweet="https" OR tweet="their" OR tweet="they"OR tweet="them" OR tweet="have" OR tweet="what")
 | search NOT (tweet="*&amp;amp;*" OR tweet="*;*")
 
 | eval len=len(tweet) | where len &gt;= $min_length$
@@ -73,7 +77,10 @@
           <sampleRatio>1</sampleRatio>
         </search>
         <option name="drilldown">none</option>
-        <option name="height">1000</option>
+        <!-- 
+        If the height is too high, that increases the font size, and we'll get less than 500 words, unfortunately.
+        -->
+        <option name="height">400</option>
         <option name="refresh.display">progressbar</option>
         <option name="trellis.enabled">0</option>
         <option name="trellis.scales.shared">1</option>
