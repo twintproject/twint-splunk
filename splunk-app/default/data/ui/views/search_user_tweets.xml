@@ -37,7 +37,7 @@
     <panel>
       <table>
         <search>
-          <query>index=main earliest=-20y username=$username$ tweet=*$keyword$* 
+          <query>index=main username=$username$ tweet=*$keyword$* 
 | dedup id
 | rename mentions{} as mentions
 | table _time tweet $fields$ 
