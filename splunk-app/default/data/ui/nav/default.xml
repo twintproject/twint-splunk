@@ -2,6 +2,7 @@
 
   <view name="user_twitter_report" default="true" />
   <view name="tag_cloud" />
+  <view name="sentiment" />
   <view name="search_user_tweets" />
   <view name="search" />
 
