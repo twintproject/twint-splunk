@@ -57,7 +57,7 @@
       <viz type="wordcloud_app.wordcloud">
         <search>
           <query>index=main username=$username$ 
-
+| dedup id
 | eval tweet=replace(tweet, "http[^ ]+", "")
 | eval tweet=replace(tweet, "pic.twitter.com[^ ]+", "")
 
