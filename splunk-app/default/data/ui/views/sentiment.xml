@@ -156,7 +156,7 @@
 | bucket _time span=$span$
 | eventstats max(sentiment) as Max by _time
 | where sentiment = Max
-| table _time tweet sentiment
+| table _time tweet 
 | rename tweet to Tweet
 | rename sentiment to Sentiment</query>
           <earliest>$date.earliest$</earliest>
@@ -186,7 +186,7 @@
 | bucket _time span=$span$
 | eventstats min(sentiment) as Min by _time
 | where sentiment = Min
-| table _time tweet sentiment
+| table _time tweet 
 | rename tweet to Tweet
 | rename sentiment to Sentiment</query>
           <earliest>$date.earliest$</earliest>

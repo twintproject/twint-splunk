@@ -1,0 +1,39 @@
+{
+    "modelName": "tweets",
+    "displayName": "tweets",
+    "description": "Tweets",
+    "objectSummary": {
+        "Event-Based": 0,
+        "Transaction-Based": 0,
+        "Search-Based": 1
+    },
+    "objects": [
+        {
+            "objectName": "tweets",
+            "displayName": "tweets",
+            "parentName": "BaseSearch",
+            "comment": "",
+            "fields": [
+                {
+                    "fieldName": "username",
+                    "owner": "tweets",
+                    "type": "string",
+                    "fieldSearch": "username=*",
+                    "required": true,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "username",
+                    "comment": ""
+                }
+            ],
+            "calculations": [],
+            "constraints": [],
+            "lineage": "tweets",
+            "baseSearch": "index=main username=*"
+        }
+    ],
+    "objectNameList": [
+        "tweets"
+    ]
+}
