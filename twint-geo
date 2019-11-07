@@ -1,0 +1,71 @@
+#!/bin/bash
+# 
+# This script downloads a user's tweets by year.
+#
+
+# Errors are fatal
+set -e
+
+#
+# Change to where this script is
+#
+pushd $(dirname $0) > /dev/null
+
+#
+# Sanity check for our username.
+#
+if test ! "$4"
+then
+	echo "! "
+	echo "! Syntax: $0 lat lon distance output_file [ options ]"
+	echo "! "
+	exit 1
+fi
+
+LAT=$1
+LON=$2
+DISTANCE=$3
+BASE_FILE=$4
+shift 4
+
+#
+# Make sure our directory exists and set a destination.
+#
+mkdir -p logs/location/
+OUTPUT=logs/location/tweets-${BASE_FILE}.json
+
+if test -f ${OUTPUT}.done
+then
+	echo "File ${OUTPUT}.done exists, we don't need to download these tweets!"
+	exit 0
+fi
+
+#
+# Set up our resume file
+#
+RESUME="resume-location-${BASE_FILE}.txt"
+
+echo "# "
+echo "# Starting download of tweets within ${DISTANCE} of ${LAT},${LON}"
+echo "# to ${OUTPUT}..."
+echo "# "
+echo "# Resume file: ${RESUME}"
+echo "# "
+if test "$#"
+then
+	echo "# Additional args: $@"
+fi
+
+STRING="-g=${LAT},${LON},${DISTANCE}"
+./twint ${STRING} $@ --json -o ${OUTPUT} --resume ${RESUME}
+
+echo "# OK: Done with download of tweets within ${DISTANCE} of ${LAT},${LON}..."
+
+#
+# After a successful run, we don't need our resume file anymore.
+#
+rm -f $RESUME
+touch ${OUTPUT}.done
+
+
+
