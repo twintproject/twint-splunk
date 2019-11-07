@@ -26,6 +26,8 @@ echo "# "
 echo "# You are running Twint Splunk, built from: https://github.com/dmuth/twint-splunk"
 echo "# Go to https://github.com/twintproject/twint for the official webpage and documentation."
 echo "# "
+echo "# Args: $@ "
+echo "# "
 docker run -v $(pwd):/mnt ${NAME} $@
 
 
