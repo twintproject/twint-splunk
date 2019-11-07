@@ -19,20 +19,6 @@ then
 fi
 
 #
-# Check to see if we have our image. If we don't, fetch it.
-#
-# TODO: In the future, I should add some logic to try fetching 
-#	again if the image is too old.
-#
-IMAGE=$(docker images | egrep "^${NAME} " | grep latest || true)
-
-if test ! "${IMAGE}"
-then
-	echo "# Docker image ${NAME} not found, downloading..."
-	docker pull ${NAME}
-fi
-
-#
 # Now run our image with the passed in arguments.
 # Point /mnt to the current directory so files can be written.
 #

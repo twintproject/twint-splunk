@@ -10,13 +10,6 @@ set -e
 # Are we running the full version? (Lite version by default)
 #
 NAME="dmuth1/twint"
-FULL=""
-if test "$1" == "full"
-then
-	NAME="dmuth1/twint-full"
-	FULL="full"
-	shift
-fi
 
 #
 # Sanity check for our username.
@@ -31,20 +24,6 @@ fi
 
 USERNAME=$1
 shift
-
-#
-# Check to see if we have our image. If we don't, fetch it.
-#
-# TODO: In the future, I should add some logic to try fetching 
-#	again if the image is too old.
-#
-IMAGE=$(docker images | egrep "^${NAME} " | grep latest || true)
-
-if test ! "${IMAGE}"
-then
-	echo "# Docker image ${NAME} not found, downloading..."
-	docker pull ${NAME}
-fi
 
 ARGS_STR=$(echo $@ | sed -e s/[^A-Za-z0-9-]/_/g)
 TWEETS="tweets-${ARGS_STR}.json"
