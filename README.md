@@ -24,7 +24,7 @@ You don't even need to clone the repo for this one:
 
 For these, you'll need to clone the repo with `git clone https://github.com/dmuth/splunk-twint.git` and then run these on the command line:
 
-- `,.twint-user dmuth --year 2020 --since 2019-01-01`
+- `./twint-user dmuth --year 2020 --since 2019-01-01`
    - Uses the `twint-user` helper script and does the same as abose, except tweets will be written in JSON format to `logs/user/dmuth/` and a resume file will automatically be used:
    - When the command completes a file with the suffix `.done` will be written next to the log so that if the command is re-run with the same parameters, the download will be skipped.
 - `./twint-user-by-year dmuth 2010 2014 -o tweets.csv`
