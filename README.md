@@ -53,6 +53,19 @@ without breaking the core functionality of pulling Twitter timelines.
 Or, to paraphrase Adam Savage, I rejected the reality and substituted my own. :-)
 
 
+## Data Analytics in Splunk
+
+<a href="https://www.splunk.com/">Splunk</a> is a fantastic data analytics platform which just happens to 
+ship with a free tier!  You can ingest up to 500 MB of data per day into Splunk free of charge.
+To that end, I wrote a Dockerized version of Splunk called
+<a href="https://github.com/dmuth/splunk-lab">Splunk Lab</a>, which can be used to quickly spin up
+an instance of Splunk and ingest data.  
+
+Here's how to get started:
+   - `./bin/splunk-start.sh` - Start an instance of Splunk Lab in a Docker container.  The welcome screen will display the default login and password, and they can be modified before continuing.  Once Splunk Lab is started, go to <a href="https://localhost:8000">https://localhost:8000/</a>, log in, and there will be some dashboards readily available.
+   - `./bin/splunk-stop.sh` - Kill the Splunk instance
+
+
 ## Development
 
 - Twint Docker Management:
@@ -62,8 +75,7 @@ Or, to paraphrase Adam Savage, I rejected the reality and substituted my own. :-
    - `./bin/pull.sh [ full ]` - Pull Docker image from Docker Hub.
    - `./bin/run.sh [ full ] args` - Run for production use. Additional args should be passed in on the command line.
 - Splunk Management:
-   - `./bin/splunk-start.sh [ --devel ]` - Start a Splunk instance at <a href="https://localhost:8000">https://localhost:8000/</a>.  Just follow the instructions on configuring Splunk. Use `--devel` if you want an interactive shell opened in the container.
-   - `./bin/splunk-stop.sh` - Kill the Splunk instance
+   - `./bin/splunk-start.sh --devel` - Start Splunk Lab in an interactive shell.  Exiting the shell will terminate the Splunk Lab container.
 
 
 ## Bugs/TODO
