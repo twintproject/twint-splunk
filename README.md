@@ -19,7 +19,7 @@ Screenshots:
 
 You don't even need to clone the repo for this one:
 
-- `bash <(curl -s https://raw.githubusercontent.com/dmuth/twint-splunk/master/twint) -u dmuth --year 2020 --since 2019-01-01`
+- `bash <(curl -s https://raw.githubusercontent.com/twintproject/twint-splunk/master/twint ) -u dmuth --year 2020 --since 2019-01-01`
    - All tweets I made from 2019.
 
 For these, you'll need to clone the repo with `git clone https://github.com/dmuth/splunk-twint.git` and then run these on the command line:
