@@ -36,7 +36,7 @@ echo "# "
 docker tag ${NAME} dmuth1/${NAME}
 if test "$NAME" == "twint-lite"
 then
-	docker tag twint dmuth1/twint
+	docker tag twint-lite dmuth1/twint
 fi
 
 echo "# Done!"
