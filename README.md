@@ -65,6 +65,8 @@ Here's how to get started:
    - `./bin/splunk-start.sh` - Start an instance of Splunk Lab in a Docker container.  The welcome screen will display the default login and password, and they can be modified before continuing.  Once Splunk Lab is started, go to <a href="https://localhost:8000">https://localhost:8000/</a>, log in, and there will be some dashboards readily available.
    - `./bin/splunk-stop.sh` - Kill the Splunk instance
 
+By default, data will be read from the directory `logs/`, so all tweets should be written under that directory.
+
 
 ## Development
 
