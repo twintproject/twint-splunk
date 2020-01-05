@@ -29,5 +29,6 @@ cd ..
 echo "# "
 echo "# Running Docker container '${NAME}' with interactive bash shell..."
 echo "# "
-docker run -v $(pwd):/mnt -it ${NAME} bash
+#docker run -v $(pwd):/mnt -it ${NAME} bash
+docker run -v $(pwd):/mnt -v $(pwd)/python-scripts:/python-scripts -it ${NAME} bash
 
