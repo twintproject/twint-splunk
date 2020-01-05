@@ -53,6 +53,27 @@ without breaking the core functionality of pulling Twitter timelines.
 Or, to paraphrase Adam Savage, I rejected the reality and substituted my own. :-)
 
 
+#### Running Python scripts in Splunk
+
+The Twint CLI is just a wrapper for the Twint Python module.  The module can be 
+accessed its from Python scripts.  The syntax for running a Python script is as follows:
+
+`twint --run-python-script /path/to/python-script [args for Python script]`
+
+The following directories will be exported to the Docker container:
+
+- `/python-scripts/` - Where the script resides.  Make sure all required libraries are local to that script.
+- `/mnt/` - The directory the `twint` wrapper is executed from.
+
+If the Python scripts write files, they should do so to either of those two directories.
+
+Example scripts that you can run with this app:
+
+- `./twint --run-python-script ./python-scripts/hello.py` - Hello World!
+- `./twint --run-python-script ./python-scripts/get-user-info` - Get user info for `dmuth`
+
+
+
 ## Data Analytics in Splunk
 
 <a href="https://www.splunk.com/">Splunk</a> is a fantastic data analytics platform which just happens to 
