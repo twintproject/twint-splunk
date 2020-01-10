@@ -7,6 +7,11 @@ RUN apk add python3 bash git gcc g++ python3-dev libffi-dev \
 
 RUN pip3 install twint
 
+#
+# Install SQLAlchemy for running any Python scripts within the container
+#
+RUN pip3 install sqlalchemy
+
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 

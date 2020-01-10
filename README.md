@@ -74,7 +74,9 @@ Example scripts that you can run with this app:
 - `./twint --run-python-script ./python-scripts/get-user-tweets dmuth` - Get 20 recent tweets for `dmuth`
 - `./twint --run-python-script ./python-scripts/get-user-following dmuth` - Get 20 users `dmuth` is following
 
-Configuration options for the module can be found at https://github.com/twintproject/twint/wiki/Configuration
+Configuration options for the twint module can be found at https://github.com/twintproject/twint/wiki/Configuration
+
+The <a href="https://www.sqlalchemy.org/">SQLAlchemy module</a> is installed for advanced interaction with SQLite databases that are created via Twint.
 
 
 ## Data Analytics in Splunk

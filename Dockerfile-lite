@@ -25,6 +25,11 @@ RUN \
 	#
 	&& pip3 install -e /twint
 
+#
+# Install SQLAlchemy for running any Python scripts within the container
+#
+RUN pip3 install sqlalchemy
+
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
