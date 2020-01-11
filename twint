@@ -97,7 +97,6 @@ echo "# Go to https://github.com/twintproject/twint for the official webpage and
 echo "# "
 echo "# Args: $@ "
 echo "# "
-#docker run -v $(pwd):/mnt ${DOCKER_V} ${NAME} ${DOCKER_ARGS} $@
 docker run -v $(pwd):/mnt -e TWINT_TIMEOUT=${TWINT_TIMEOUT} ${DOCKER_V} ${NAME} ${DOCKER_ARGS} $@
 
 
