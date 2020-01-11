@@ -72,7 +72,8 @@ Example scripts that you can run with this app:
 - `./twint --run-python-script ./python-scripts/hello.py` - Hello World!
 - `./twint --run-python-script ./python-scripts/get-user-info.py dmuth` - Get user info for `dmuth`
 - `./twint --run-python-script ./python-scripts/get-user-tweets.py dmuth` - Get 20 recent tweets for `dmuth`
-- `./twint --run-python-script ./python-scripts/get-user-following.py dmuth` - Get 20 users `dmuth` is following
+- `TWINT_TIMEOUT=10 ./twint --run-python-script ./python-scripts/get-user-following.py dmuth` 
+   - Get 20 users `dmuth` is following and set a timeout of 10 seconds for each fetch.  This does not mean 10 seconds for the entire script, but rather a timeout for _any_ read of Twitter.  This is helpful for when Twitter is slow and you'd rather your script time out sooner rather than later.
 
 Configuration options for the twint module can be found at https://github.com/twintproject/twint/wiki/Configuration
 

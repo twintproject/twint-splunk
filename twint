@@ -21,6 +21,11 @@ DOCKER_V=""
 # Additional args to pass into Docker, such as for Python scripts
 DOCKER_ARGS=""
 
+#
+# Set a default timeout if we don't have one
+#
+TWINT_TIMEOUT=${TWINT_TIMEOUT:-120}
+
 if test "$1" == "full"
 then
 	NAME="dmuth1/twint-full"
@@ -92,6 +97,7 @@ echo "# Go to https://github.com/twintproject/twint for the official webpage and
 echo "# "
 echo "# Args: $@ "
 echo "# "
-docker run -v $(pwd):/mnt ${DOCKER_V} ${NAME} ${DOCKER_ARGS} $@
+#docker run -v $(pwd):/mnt ${DOCKER_V} ${NAME} ${DOCKER_ARGS} $@
+docker run -v $(pwd):/mnt -e TWINT_TIMEOUT=${TWINT_TIMEOUT} ${DOCKER_V} ${NAME} ${DOCKER_ARGS} $@
 
 
