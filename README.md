@@ -70,9 +70,9 @@ If the Python scripts write files, they should do so to either of those two dire
 Example scripts that you can run with this app:
 
 - `./twint --run-python-script ./python-scripts/hello.py` - Hello World!
-- `./twint --run-python-script ./python-scripts/get-user-info dmuth` - Get user info for `dmuth`
-- `./twint --run-python-script ./python-scripts/get-user-tweets dmuth` - Get 20 recent tweets for `dmuth`
-- `./twint --run-python-script ./python-scripts/get-user-following dmuth` - Get 20 users `dmuth` is following
+- `./twint --run-python-script ./python-scripts/get-user-info.py dmuth` - Get user info for `dmuth`
+- `./twint --run-python-script ./python-scripts/get-user-tweets.py dmuth` - Get 20 recent tweets for `dmuth`
+- `./twint --run-python-script ./python-scripts/get-user-following.py dmuth` - Get 20 users `dmuth` is following
 
 Configuration options for the twint module can be found at https://github.com/twintproject/twint/wiki/Configuration
 
